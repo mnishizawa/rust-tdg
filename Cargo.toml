@@ -1,9 +1,15 @@
 [package]
-name = "rust-tdg"
+name = "myapp"
 version = "0.1.0"
 authors = ["ec2-user"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "tdg_service"
+path = "src/bin/tdg-service.rs"
+
 [dependencies]
+actix-web = "3"
+test-data-generation = "0.2"

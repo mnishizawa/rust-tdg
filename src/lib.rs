@@ -1,7 +1,6 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+extern crate actix_web;
+extern crate test_data_generation;
+
+static VER: &str = "v1";
+
+pub mod tdg_service;
