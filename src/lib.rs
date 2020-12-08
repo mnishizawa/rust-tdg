@@ -1,3 +1,5 @@
+extern crate log;
+extern crate env_logger;
 extern crate actix_web;
 extern crate test_data_generation;
 
