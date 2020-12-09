@@ -1,6 +1,9 @@
 use super::*;
 use actix_web::{HttpRequest, HttpResponse };
 use actix_web::http::{StatusCode};
+use test_data_generation::data_sample_parser::DataSampleParser;
+
+static WORKSPACE_LOCAL_STORAGE: &str = "../profiles";
 
 pub fn get_service_root() -> String {
     format!("/tdg/{}", VER)
@@ -11,8 +14,11 @@ pub fn get_service_path() -> String {
 }
 
 pub fn index(_req: HttpRequest) -> HttpResponse {
+    let dsp_file = &format!("{}/{}", WORKSPACE_LOCAL_STORAGE, "sample-01-dsp");
+    let mut dsp = DataSampleParser::from_file(&dsp_file);
+
     HttpResponse::build(StatusCode::OK)
-    .body("Hello World!".to_string())
+    .body(dsp.generate_record()[0].to_string())
 }
 
 #[cfg(test)]
